@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.yygh.user.mapper.PatientMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yh.yygh.common.vo.Patient">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="name" property="name" />
+        <result column="certificates_type" property="certificatesType" />
+        <result column="certificates_no" property="certificatesNo" />
+        <result column="sex" property="sex" />
+        <result column="birthdate" property="birthdate" />
+        <result column="phone" property="phone" />
+        <result column="is_marry" property="isMarry" />
+        <result column="province_code" property="provinceCode" />
+        <result column="city_code" property="cityCode" />
+        <result column="district_code" property="districtCode" />
+        <result column="address" property="address" />
+        <result column="contacts_name" property="contactsName" />
+        <result column="contacts_certificates_type" property="contactsCertificatesType" />
+        <result column="contacts_certificates_no" property="contactsCertificatesNo" />
+        <result column="contacts_phone" property="contactsPhone" />
+        <result column="card_no" property="cardNo" />
+        <result column="is_insure" property="isInsure" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, name, certificates_type, certificates_no, sex, birthdate, phone, is_marry, province_code, city_code, district_code, address, contacts_name, contacts_certificates_type, contacts_certificates_no, contacts_phone, card_no, is_insure, status, create_time, update_time, is_deleted
+    </sql>
+
+</mapper>

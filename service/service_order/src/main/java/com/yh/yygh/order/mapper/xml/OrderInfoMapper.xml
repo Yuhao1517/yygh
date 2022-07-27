@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.yygh.order.mapper.OrderInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yh.yygh.order.pojo.OrderInfo">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="out_trade_no" property="outTradeNo" />
+        <result column="hoscode" property="hoscode" />
+        <result column="hosname" property="hosname" />
+        <result column="depcode" property="depcode" />
+        <result column="depname" property="depname" />
+        <result column="title" property="title" />
+        <result column="hos_schedule_id" property="hosScheduleId" />
+        <result column="reserve_date" property="reserveDate" />
+        <result column="reserve_time" property="reserveTime" />
+        <result column="patient_id" property="patientId" />
+        <result column="patient_name" property="patientName" />
+        <result column="patient_phone" property="patientPhone" />
+        <result column="hos_record_id" property="hosRecordId" />
+        <result column="number" property="number" />
+        <result column="fetch_time" property="fetchTime" />
+        <result column="fetch_address" property="fetchAddress" />
+        <result column="amount" property="amount" />
+        <result column="quit_time" property="quitTime" />
+        <result column="order_status" property="orderStatus" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, out_trade_no, hoscode, hosname, depcode, depname, title, hos_schedule_id, reserve_date, reserve_time, patient_id, patient_name, patient_phone, hos_record_id, number, fetch_time, fetch_address, amount, quit_time, order_status, create_time, update_time, is_deleted
+    </sql>
+
+    <select id="selectOrderCount" resultType="com.yh.yygh.common.vo.OrderCountVo">
+        select reserve_date as reserveDate, count(reserve_date) as count
+        from order_info
+        <where>
+            <if test="orderCountQueryVo.hosname!=null and orderCountQueryVo.hosname!=''">
+                and hosname like CONCAT('%',#{orderCountQueryVo.hosname},'%')
+            </if>
+            <if test="orderCountQueryVo.reserveDateBegin != null and orderCountQueryVo.reserveDateBegin != ''">
+                and reserve_date >= #{orderCountQueryVo.reserveDateBegin}
+            </if>
+            <if test="orderCountQueryVo.reserveDateEnd != null and orderCountQueryVo.reserveDateEnd != ''">
+                and reserve_date &lt;= #{orderCountQueryVo.reserveDateEnd}
+            </if>
+            and is_deleted = 0
+        </where>
+        group by reserve_date
+        order by reserve_date
+    </select>
+
+</mapper>

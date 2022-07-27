@@ -14,6 +14,7 @@
     <modules>
         <module>service-util</module>
         <module>common_util</module>
+        <module>rabbit_util</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -23,14 +24,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <scope>provided </scope>
+            <scope>provided</scope>
         </dependency>
 
         <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <scope>provided </scope>
+            <scope>provided</scope>
         </dependency>
 
         <!--lombok用来简化实体类：需要安装lombok插件-->

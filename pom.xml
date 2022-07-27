@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yh</groupId>
+    <artifactId>yygh_parent</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>common</module>
         <module>model</module>
         <module>service</module>
+        <module>service_client</module>
+        <module>service_gateway</module>
+        <module>service_msm</module>
+        <module>server_msm</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.12.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yh</groupId>
-    <artifactId>yygh_parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>yygh_parent</name>
-    <description>Demo project for Spring Boot</description>
-
     <properties>
         <java.version>1.8</java.version>
         <cloud.version>Hoxton.RELEASE</cloud.version>
-        <alibaba.version>2.2.0.RELEASE</alibaba.version>
-        <mybatis-plus.version>3.3.1</mybatis-plus.version>
-        <mysql.version>5.1.37</mysql.version>
+        <alibaba.version>2.1.0.RELEASE</alibaba.version>
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <mysql.version>5.1.46</mysql.version>
         <swagger.version>2.7.0</swagger.version>
         <jwt.version>0.7.0</jwt.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.75</fastjson.version>
         <httpclient.version>4.5.1</httpclient.version>
-        <easyexcel.version>2.2.0-beta2</easyexcel.version>
-        <aliyun.version>4.4.1</aliyun.version>
+        <easyexcel.version>2.1.1</easyexcel.version>
+        <aliyun.version>4.3.3</aliyun.version>
         <oss.version>3.10.2</oss.version>
-        <jodatime.version>2.10.2</jodatime.version>
+        <jodatime.version>2.10.1</jodatime.version>
     </properties>
 
     <!--配置dependencyManagement锁定依赖的版本-->
@@ -59,13 +62,13 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <version>3.0.5</version>
             </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
+                <version>5.1.37</version>
             </dependency>
 
             <!--swagger-->
@@ -96,7 +99,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <version>1.2.72</version>
             </dependency>
 
             <dependency>
@@ -108,7 +111,7 @@
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-core</artifactId>
-                <version>${aliyun.version}</version>
+                <version>4.4.1</version>
             </dependency>
 
             <dependency>
@@ -121,10 +124,21 @@
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
-                <version>${jodatime.version}</version>
+                <version>2.10.5</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-
+    <!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>

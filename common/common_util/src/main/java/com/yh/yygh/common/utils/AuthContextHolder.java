@@ -7,11 +7,14 @@ import java.util.Enumeration;
 
 //获取当前用户信息工具类
 public class AuthContextHolder {
-    public static void test(){
-        System.out.println("测试环境 ");
+
+    public static void testGit(){
+        System.out.println("....");
     }
     //获取当前用户id
     public static Long getUserId(HttpServletRequest request){
+        testGit();
+        System.out.println("dev");
         //从header获取token
         String token = request.getHeader("token");
         //jwt从token获取userid

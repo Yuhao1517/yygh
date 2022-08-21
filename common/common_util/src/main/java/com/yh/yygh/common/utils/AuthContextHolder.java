@@ -12,7 +12,7 @@ public class AuthContextHolder {
         System.out.println("....");
     }
     public static void testFeature(){
-        System.out.println("第一次迭代");
+        System.out.println("第一次迭代..");
     }
     //获取当前用户id
     public static Long getUserId(HttpServletRequest request){
